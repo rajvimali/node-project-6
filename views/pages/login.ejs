@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs') %>
+<section class="vh-100 bg-image">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5 shadow rounded bg-secondary">
+              <h2 class=" text-center mb-5">LOGIN</h2>
+
+              <form id="form" action="/login" method="post">
+
+                <div class="form-outline mb-4">
+                  <label class="form-label text-white fs-5" for=""> Email :</label>
+                  <input type="email" name="email" id="" placeholder="Enter your email" class="form-control fs-6 form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label text-white fs-5" for="">Password :</label>
+                  <input type="password" name="password" id="" placeholder="Enter your password" class="form-control fs-6 form-control-lg" />
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit"
+                    class="btn btn-success form-control  btn-block btn-lg gradient-custom-4 text-white">Login</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0"></p> <a href="/signup"
+                    class="fw-bold text-white fs-5 "><u>Signup here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer.ejs') %>

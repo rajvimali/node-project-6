@@ -1,0 +1,107 @@
+<%-include('../partials/header.ejs')%>
+
+<div class="container">
+  <h1 class="text-center">Edit Movie</h1>
+  <form id="form" class="rounded px-8 pt-6 mb-4" action="" enctype="multipart/form-data" method="post" onsubmit="return handleForm(this)">
+
+    <label class="form-lable">
+      Movie Title
+    </label>
+    <input class="form-control" type="text" name="title" value="<%=movie.title %>" />
+    <p class="text-danger" id="titlee"></p>
+
+    <label class="form-lable">
+      Description
+    </label>
+    <input class="form-control" type="text" name="description" value="<%=movie.description %>" />
+    <p class="text-danger" id="descriptionError"></p>
+
+    <label class="form-lable">
+      genre
+    </label>
+    <select class="form-select" name="genre">
+      <option value="" disabled selected>
+        genre
+      </option>
+      <option <%=movie.genre==='action' ? 'selected' : '' %> value="action">Action</option>
+      <option <%=movie.genre==='comedy' ? 'selected' : '' %> value="comedy">Comedy</option>
+      <option <%=movie.genre==='romance' ? 'selected' : '' %> value="romance">Romance</option>
+    </select>
+    <p class="text-danger" id="genreError"></p>
+
+    <label class="form-lable">
+      Published Year
+    </label>
+    <input class="form-control" type="number" name="release_year" value="<%=movie.release_year %>" />
+    <p class="text-danger" id="releaseYearError"></p>
+
+    <label class="form-lable">
+      Rating
+    </label>
+    <input class="form-control" type="text" name="rating" value="<%=movie.rating %>" />
+    <p class="text-danger" id="ratingError"></p>
+    
+    <input type="file" name="file" id="fileInput">
+    <img src="/<%=movie.image%>" alt="Movie Image" width="100px">
+
+    <br>
+    <button class="btn btn-primary" type="submit">
+      Update
+    </button>
+  </form>
+</div>
+
+<%-include('../partials/footer.ejs')%>
+
+<script>
+  function handleForm(e) {
+    let submit = true;
+    const title = e.title;
+    const description = e.description;
+    const genre = e.genre;
+    const release_year = e.release_year;
+    const rating = e.rating;
+
+    if (title.value === "") {
+      document.getElementById("titlee").innerHTML = "Please enter Movie title";
+      submit = false;
+    } else {
+      document.getElementById("titlee").innerHTML = "";
+    }
+
+    if (description.value === "") {
+      document.getElementById("descriptionError").innerHTML = "Please enter description";
+      submit = false;
+    } else {
+      document.getElementById("descriptionError").innerHTML = "";
+    }
+
+    if (genre.value === "") {
+      document.getElementById("genreError").innerHTML = "Please select genre";
+      submit = false;
+    } else {
+      document.getElementById("genreError").innerHTML = "";
+    }
+
+    if (release_year.value === "") {
+      document.getElementById("releaseYearError").innerHTML = "Please enter release year";
+      submit = false;
+    } else {
+      document.getElementById("releaseYearError").innerHTML = "";
+    }
+
+    if (rating.value === "") {
+      document.getElementById("ratingError").innerHTML = "Please enter total rating";
+      submit = false;
+    } else {
+      if(rating.value >= 0 && rating.value <= 10){
+        document.getElementById("ratingError").innerHTML = "";
+      }else{
+        document.getElementById("ratingError").innerHTML = "Plese enter rating in 0 to 10";
+      submit = false;
+      }
+    }
+
+    return submit;
+  }
+</script>
